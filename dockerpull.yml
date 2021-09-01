@@ -5,9 +5,9 @@
   
   tasks:           
      - name: pull image from ecr
-         shell:
-           cmd: docker pull 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
+       shell:
+         cmd: docker pull 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
        
      - name: start a container
-         shell:
-           cmd: docker run -d --name cont1 -p 8096:8080 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
+       shell:
+         cmd: docker run -d --name cont1 -p 8096:8080 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
