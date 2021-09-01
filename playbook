@@ -1,0 +1,17 @@
+---
+- name: this playbook is to pull image from dockerhub
+  hosts: webserver
+  become: true
+  
+  tasks:
+     - name: login to ecr
+         shell:
+           cmd: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 400786363496.dkr.ecr.ap-south-1.amazonaws.com
+           
+     - name: pull image from ecr
+         shell:
+           cmd: docker pull 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
+       
+     - name: start a container
+         shell:
+           cmd: docker run -d --name cont1 -p 8096:8080 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
