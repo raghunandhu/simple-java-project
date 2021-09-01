@@ -3,11 +3,7 @@
   hosts: webserver
   become: true
   
-  tasks:
-     - name: login to ecr
-       shell:
-         cmd: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 400786363496.dkr.ecr.ap-south-1.amazonaws.com
-         
+  tasks:      
      - name: pull image from ecr
        shell:
          cmd: docker pull 400786363496.dkr.ecr.ap-south-1.amazonaws.com/newrepo:latest
